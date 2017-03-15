@@ -7,7 +7,7 @@
 
 <html>
   <head>
-    <title>Group assignment 02: functios and forms</title>
+    <title>Group assignment 02: functions and forms</title>
     <style>
       body {
         font-family: "helvetica";
