@@ -15,3 +15,5 @@
 - Ted Herr
 - Freja Koch
 - Dmitri Kossenko
+
+[Google doc](https://docs.google.com/document/d/18jMbRGxWR0WVyEJ9hm81uidNXfaCc2lEWzrV5dn-5aw/edit)
