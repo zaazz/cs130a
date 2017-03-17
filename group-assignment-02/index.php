@@ -19,23 +19,30 @@
     </style>
   </head>
   <body>
-  
+
     <?php
-    
+
       /**************************/
       /* php script placeholder */
       /**************************/
-      
-      // prints a form to collect registration data from a user
+
+      // displays a form to collect registration data from a user
       function displayForm() {
-        // todo: determine variables        
+        // todo: determine fields and variables
+           // Full name (text)
+           // email
+           // location (City)
       }
-      
+
       // prints a user's registration information
       function output(/** parameters here **/) {
         // todo
+
       }
-      
-    ?>    
+
+      function validateForm()  {
+        // todo
+      }
+    ?>
   </body>
 </html>
