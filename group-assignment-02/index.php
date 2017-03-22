@@ -5,6 +5,10 @@
   }
 ?>
 
+<!--
+  Contributors: Ted Herr, Greg Gorlen
+-->
+
 <html>
   <head>
     <title>Group assignment 02: functions and forms</title>
@@ -23,88 +27,110 @@
 
     <?php
 
-      // Validates a user's form input
-      function validateRegistration()  {
-          global $firstname,$lastname,$email,$color;
-          $firstname = $_GET['firstname'];
-          $lastname = $_GET['lastname'];
-          $email = $_GET['email'];
-          $color = $_GET['color'];
-        // todo
-        // use regex for email validation
-      }
-
-      // Prints a user's registration information
-  function outputRegistration($firstname,$lastname,$email,$color) {
-      echo "<br><br>Welcome ".$firstname." ! <br>";
-      echo "Your registration information has been recorded as follows..<br>";
-      echo "First name: $firstname<br>";
-      echo "Last name: $lastname<br>";
-      echo "Email: $email<br>";
-      echo "Color: $color<br><br>";
-  }
-
       // Sends the pre-set user registration form to the DOM
       function displayRegistrationForm() {
-        echo "<form method='GET' action='group_assignment02.php'>
+        echo '<form method="POST" action="group_assignment02.php">
                 <table>
                   <tr>
+                    <td>First name:</td>
                     <td>
-                      First name:
-                    </td>
-                    <td>
-                      <input name=\"firstname\" type=\"text\"
+                      <input name="firstname" type="text"
                         size=15 required autofocus>&nbsp;
                     </td>
                   </tr>
                   <tr>
+                    <td>Last name:</td>
                     <td>
-                      Last name:
+                      <input name="lastname" type="text"
+                        size=15 required>
                     </td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
                     <td>
-                      <input name=\"lastname\" type=\"text\"
+                      <input name="email" type="text"
+                        size=15 required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Favorite color:</td>
+                    <td>
+                      <input name="color" type="text"
                         size=15 required>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      Email:
-                    </td>
-                    <td>
-                      <input name=\"email\" type=\"text\"
-                        size=15 required>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Favorite color:
-                    </td>
-                    <td>
-                      <input name=\"color\" type=\"text\"
-                        size=15 required>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input type=\"submit\">
-                      <input type=\"reset\">
+                      <input type="submit">
+                      <input type="reset">
                     </td>
                     <td></td>
                   </tr>
                 </table>
-              </form>";
+              </form>';
+      } // end displayRegistration
+
+      // Validates a user's form input
+      function validateRegistration($data)  {
+        return $data['first'] && $data['last'] &&
+               $data['email'] && $data['color'] &&
+               filter_var($data['email'], FILTER_VALIDATE_EMAIL);
       }
+
+      // Prints a user's registration information
+      function outputRegistration($data) {
+        echo '<table>
+                <tr>
+                  <td>Welcome, ' . $data['first'] . ' !</td>
+                </tr>
+                <tr>
+                  <td>
+                    Your registration information has been recorded as follows..
+                  </td>
+                </tr>
+              </table>
+              <table>
+                <tr>
+                  <td>First name:</td>
+                  <td>' . $data['first'] . '</td>
+                </tr>
+                <tr>
+                  <td>Last name:</td>
+                  <td>' . $data['last'] . '</td>
+                </tr>
+                <tr>
+                  <td>Email:</td>
+                  <td>' . $data['email'] . '</td>
+                </tr>
+                <tr>
+                  <td>Favorite color:</td>
+                  <td>' . $data['color'] . '</td>
+                </tr>
+              </table>';
+      }
+
 
       // Show the user the registration form
       displayRegistrationForm();
 
-      // If a form has been submitted, process it and display the result
-      if (count($_GET) && isset($_GET["firstname"])) {
-        print "Form submitted...";
-        validateRegistration();
-        outputRegistration($firstname,$lastname,$email,$color);
-      }
+      // If a form has been submitted, process it
+      if (count($_POST)) {
 
+        // Retrieve data from form
+        $data = [];
+        $data['first'] = $_POST['firstname'];
+        $data['last'] = $_POST['lastname'];
+        $data['email'] = $_POST['email'];
+        $data['color'] = $_POST['color'];
+
+        // Display confirmation or failure
+        if (validateRegistration($data)) {
+          outputRegistration($data);
+        }
+        else {
+          echo '<div><strong>Invalid registration information</strong></div>';
+        }
+      }
     ?>
 
   </body>
