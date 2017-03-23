@@ -9,7 +9,8 @@
   Contributors: Ted Herr, Greg Gorlen
 -->
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Group assignment 02: functions and forms</title>
     <style>
@@ -27,7 +28,7 @@
 
     <?php
 
-      // Sends the pre-set user registration form to the DOM
+      // Prints a pre-set user registration form
       function displayRegistrationForm() {
         echo '<form method="POST" action="group_assignment02.php">
                 <table>
@@ -71,11 +72,12 @@
       } // end displayRegistration
 
       // Validates a user's form input
+      // All fields must be present with a valid email address
       function validateRegistration($data)  {
         return $data['first'] && $data['last'] &&
                $data['email'] && $data['color'] &&
                filter_var($data['email'], FILTER_VALIDATE_EMAIL);
-      }
+      } // end validateRegistration
 
       // Prints a user's registration information
       function outputRegistration($data) {
@@ -107,7 +109,7 @@
                   <td>' . $data['color'] . '</td>
                 </tr>
               </table>';
-      }
+      } // end outputRegistration
 
 
       // Show the user the registration form
