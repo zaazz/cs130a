@@ -15,10 +15,10 @@ I don't care what you choose as long as it implements the following concepts:
 
 **Group members:**
 
-- Raymond Chen
 - Gregory Gorlen
 - Ted Herr
-- Freja Koch
-- Dmitri Kossenko
+- Anton Koval
+- Gabriel Lynch
+- Julie Ann Yuen
 
 [Google doc](https://docs.google.com/document/d/18jMbRGxWR0WVyEJ9hm81uidNXfaCc2lEWzrV5dn-5aw/edit)
