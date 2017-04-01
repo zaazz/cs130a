@@ -21,4 +21,4 @@ I don't care what you choose as long as it implements the following concepts:
 - Gabriel Lynch
 - Julie Ann Yuen
 
-[Google doc](https://docs.google.com/document/d/18jMbRGxWR0WVyEJ9hm81uidNXfaCc2lEWzrV5dn-5aw/edit)
+[Google doc](https://docs.google.com/document/d/1OyhaL1pFP9uK3ROmOylruXNbtp67z0jLvrT_-Fy00NY/edit)
