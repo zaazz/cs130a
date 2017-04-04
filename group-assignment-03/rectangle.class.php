@@ -16,9 +16,9 @@ class Rectangle extends Shape {
     }
     
     /**
-     * Returns the circumference of the Rectangle
+     * Returns the perimeter of the Rectangle
      */
-    public function getCircumference() {
+    public function getPerimeter() {
         return 2 * $this->width + 2 * $this->height;
     }
 }
