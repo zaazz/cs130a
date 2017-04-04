@@ -10,8 +10,8 @@ class Circle extends Shape {
     /**
      * Constructor function
      *
-     * @param number $radius the radius of the Circle
      * @param Vector $origin the origin Vector
+     * @param number $radius the radius of the Circle
      */
     public function __construct($origin, $radius) {
         $this->setOrigin($origin);
