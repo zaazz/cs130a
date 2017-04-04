@@ -25,7 +25,7 @@
     <style>
       body {
         margin: 10px;
-        font-family: "helvetica";
+        font-family: "monospace";
         font-size: 13px;
         width: 95%;
       }
@@ -36,7 +36,10 @@
   <body>
     <div id="main">
       <?php
-
+        echo '<pre>';
+        $triangle = new Triangle([new Vector(3, 4), new Vector(6,7), new Vector(1,4)]);
+        print_r($triangle);
+        echo '</pre>';
       ?>
     </div>
   </body>
