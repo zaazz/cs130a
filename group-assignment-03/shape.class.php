@@ -11,9 +11,9 @@ abstract class Shape {
     abstract function getArea();
 
     /**
-     * Returns the circumference of the shape
+     * Returns the perimeter of the shape
      */
-    abstract function getCircumference();
+    abstract function getPerimeter();
 }
 
 ?>

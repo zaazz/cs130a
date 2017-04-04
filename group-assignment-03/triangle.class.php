@@ -22,7 +22,7 @@ class Triangle extends Shape {
     }
 
     /** 
-     * Setter for vertices
+     * Setter for vertices, requiring an array of three vertices
      */ 
     public function setVertices($vertices){
         if (count($vertices) === 3 && $this->isVectorArray($vertices)) {
@@ -32,21 +32,22 @@ class Triangle extends Shape {
     }
     
     /**
-     * Returns the area of the Rectangle
+     * Returns the area of the Triangle
      */
     public function getArea() {
+        return; //  .5 * base * height
     }
 
     /**
-     * Returns the circumference of the Rectangle
+     * Returns the perimeter of the Triangle
      */
-    public function getCircumference() {
+    public function getPerimeter() {
     }
 
     // Determines whether all elements in an array are Vector objects
     private function isVectorArray($arr) {
-        forEach($arr as $elem) {
-            if (!($elem instanceof Vector)) {
+        forEach($arr as $element) {
+            if (!($element instanceof Vector)) {
                 return false;
             }
         }
