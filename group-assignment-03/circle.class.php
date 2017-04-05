@@ -13,9 +13,10 @@ class Circle extends Shape {
      * @param Vector $origin the origin Vector
      * @param number $radius the radius of the Circle
      */
-    public function __construct($origin, $radius) {
+    public function __construct($origin, $radius, $color) {
         $this->setOrigin($origin);
         $this->setRadius($radius);
+        $this->setColor($color);
     }
 
     /**

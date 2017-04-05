@@ -4,9 +4,9 @@
  * Represents a rectangle
  */
 class Rectangle extends Shape {
+    private $origin; // A Vector object for the upper-left corner
     private $length;
     private $width;
-    private $origin; // A Vector object for the upper-left corner
     
     /**
      * Constructor for a Rectangle
@@ -15,12 +15,25 @@ class Rectangle extends Shape {
      * @param number $length the length of the rectangle
      * @param number $width the width of the rectangle
      */
-    public function __construct($origin, $length, $width) {
+    public function __construct($origin, $length, $width, $color) {
 
         // TODO : validate with setters
         $this->origin = $origin;
         $this->length = $length;
         $this->width = $width;
+        $this->setColor($color);
+    }
+
+    public function getOrigin() {
+        return $this->origin;
+    }
+
+    public function getLength() {
+        return $this->length;
+    }
+
+    public function getWidth() {
+        return $this->width;
     }
 
     /**

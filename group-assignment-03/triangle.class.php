@@ -10,8 +10,9 @@ class Triangle extends Shape {
     /**
      * Constructor for a triangle, requiring an array of three vertices
      */
-    public function __construct($vertices) {
+    public function __construct($vertices, $color) {
         $this->setVertices($vertices);
+        $this->setColor($color);
     }
 
     /**
