@@ -1,2 +1,2 @@
 # cs130a
-Projects for CS130A, Spring 2017
+Assignments and group projects for CS130A: PHP Programming, Spring 2017

@@ -1,7 +1,7 @@
 <?php
   if (isset($_GET['source'])) {
-        highlight_file($_SERVER['SCRIPT_FILENAME']);
-        exit;
+    highlight_file($_SERVER['SCRIPT_FILENAME']);
+    exit;
   }
 ?>
 <html lang="en">
@@ -26,13 +26,17 @@
       }
 
       .assignmentstable {
-        width: 450px;
+        width: 550px;
         margin-bottom: 20px;
       }
 
       .assignmentstable td, th {
         padding: 10px;
         border: 1px solid #aaa;
+      }
+
+      .assignmentstable tr:hover {
+        background-color: #eee;
       }
     </style>
 
@@ -115,7 +119,18 @@
       </tr>
       <tr>
         <th>03</th>
-        <td><a href="group-assignment-03/index.php?source">Group lab 03 Source code</a></td>
+        <td>
+          Group lab 03 Source code:
+          <ul style="list-style: none; padding-left: 0px;">
+            <li><a href="group-assignment-03/index.php?source">index.php</a></li>
+            <li><a href="group-assignment-03/shape.class.php?source">shape.class.php</a></li>
+            <li><a href="group-assignment-03/vector.class.php?source">vector.class.php</a></li>
+            <li><a href="group-assignment-03/circle.class.php?source">circle.class.php</a></li>
+            <li><a href="group-assignment-03/triangle.class.php?source">triangle.class.php</a></li>
+            <li><a href="group-assignment-03/rectangle.class.php?source">rectangle.class.php</a></li>
+            <li><a href="group-assignment-03/rendering.php?source">rendering.php</a></li>
+          </ul>
+        </td>
         <td><a href="group-assignment-03/index.php">Group lab 03</a></td>
       </tr>
     </table>
