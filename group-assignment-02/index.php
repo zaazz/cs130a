@@ -139,10 +139,10 @@
                   <tr>
                     <td>Last name:</td>
                     <td><strong>' . $data['last'] . '</strong></td>
-              </tr>
-              <tr>
-                <td>Email:</td>
-                <td><strong>' . $data['email'] . '</strong></td>
+          	</tr>
+          	<tr>
+          	  <td>Email:</td>
+          	  <td><strong>' . $data['email'] . '</strong></td>
                   </tr>
                   <tr>
                     <td>Favorite color:</td>

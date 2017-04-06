@@ -12,7 +12,7 @@
     </style>
   </head>
   <body>
-    <div style="width:50%;">
+    <div style="width:50%;">   
     <?php
 
       // Represents an address
@@ -63,7 +63,7 @@
         }
       } // end Address
 
-
+ 
       // Represents a student
       class Student {
         private $id;
@@ -76,7 +76,7 @@
         private $dob;
         private $pin;
         private $facultyId;
-
+        
         public function __construct($data) {
           $this->setId($data['id']);
           $this->setLast($data['last']);
@@ -131,7 +131,7 @@
 
         public function getPhone() { return $this->phone; }
         public function setPhone($phone) {
-          if (is_string($phone) &&
+          if (is_string($phone) && 
               preg_match('/^\(\d{3}\) \d{3}-\d{4}$/', $phone)) {
             $this->phone = $phone;
           }
@@ -148,7 +148,7 @@
 
         public function getDOB() { return $this->dob; }
         public function setDOB($dob) {
-          if (is_string($dob) &&
+          if (is_string($dob) && 
               preg_match('/^\d{2}-\d{2}-\d{2}$/', $dob)) {
             $this->dob = $dob;
           }
@@ -172,8 +172,8 @@
         }
       } // end Student
 
-
-
+      
+ 
       // Represents a faculty member
       class Faculty {
         private $id;
@@ -185,7 +185,7 @@
         private $rank;
         private $pin;
         private $image;
-
+        
         public function __construct($data) {
           $this->setId($data['id']);
           $this->setLast($data['last']);
@@ -265,7 +265,7 @@
 
         public function getImage() { return $this->image; }
         public function setImage($image) {
-          if (is_string($image) &&
+          if (is_string($image) && 
               preg_match('/(.bmp|.jpg|.jpeg|.png|.gif)$/', $image)) {
             $this->image = $image;
           }
@@ -274,25 +274,25 @@
       } // end Faculty
 
 
-
+      
       // Create objects of each class
-      $greg = new Student(['id' => 45, 'last' => 'gorlen',
-                           'first' => 'greg', 'mi' => 's',
+      $greg = new Student(['id' => 45, 'last' => 'gorlen', 
+                           'first' => 'greg', 'mi' => 's', 
                            'address' => new Address(
-                             '1400 Market St',
+                             '1400 Market St', 
                              'San Francisco', 'CA', 94100
-                           ),
-                           'phone' => '(415) 666-4444',
-                           'className' => 'PHP Programming',
-                           'dob' => '03-10-86',
-                           'pin' => '1234',
+                           ), 
+                           'phone' => '(415) 666-4444', 
+                           'className' => 'PHP Programming', 
+                           'dob' => '03-10-86', 
+                           'pin' => '1234', 
                            'facultyId' => 12345671234]);
 
-      $mark = new Faculty(['id' => 310, 'last' => 'smith',
-                           'first' => 'mark', 'mi' => 'e',
-                           'phone' => '(415) 446-6664',
-                           'rank' => 'captain',
-                           'pin' => '4321', 'locId' => 234,
+      $mark = new Faculty(['id' => 310, 'last' => 'smith', 
+                           'first' => 'mark', 'mi' => 'e', 
+                           'phone' => '(415) 446-6664', 
+                           'rank' => 'captain', 
+                           'pin' => '4321', 'locId' => 234, 
                            'image' => 'mark.jpg']);
 
       // Test the objects
@@ -300,17 +300,17 @@
       print_r($greg);
       print_r($mark);
       echo '<h3>Demonstrate setters and getters</h3>' .
-           'Get the id property of the Student object: ' .
-           $greg->getId() . '<br />' .
-           'Set the id property of the Student object to 569... ' .
+           'Get the id property of the Student object: ' . 
+           $greg->getId() . '<br />' . 
+           'Set the id property of the Student object to 569... ' . 
            $greg->setId(569) . '<br />' .
-           'Get the id property of the Student object: ' .
+           'Get the id property of the Student object: ' . 
            $greg->getId() . '<br />...</br>' .
-           'Get the phone property of the Faculty object: ' .
+           'Get the phone property of the Faculty object: ' . 
            $mark->getPhone() . '<br />' .
-           'Set the phone property of the Faculty object to (999) 999-1111... ' .
+           'Set the phone property of the Faculty object to (999) 999-1111... ' . 
            $mark->setPhone('(999) 999-1111') . '<br />' .
-           'Get the phone property of the Faculty object: ' .
+           'Get the phone property of the Faculty object: ' . 
            $mark->getPhone() . '<br />';
       echo '</pre>';
     ?>

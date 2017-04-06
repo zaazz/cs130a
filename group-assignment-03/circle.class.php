@@ -1,4 +1,11 @@
 <?php
+  if (isset($_GET['source'])) {
+    highlight_file($_SERVER['SCRIPT_FILENAME']);
+    exit;
+  }
+?>
+
+<?php
 
 /**
  * Represents a circle
@@ -10,8 +17,10 @@ class Circle extends Shape {
     /**
      * Constructor function
      *
-     * @param Vector $origin the origin Vector
-     * @param number $radius the radius of the Circle
+     * @param Vector $origin the Vector center of the circle
+     * @param number $radius the number radius of the Circle
+     *
+     * @throws InvalidArgumentException 
      */
     public function __construct($origin, $radius, $color) {
         $this->setOrigin($origin);
@@ -21,6 +30,8 @@ class Circle extends Shape {
 
     /**
      * Returns the origin Vector of the circle
+     *
+     * @return Vector the origin Vector of the circle
      */
     public function getOrigin() {
         return $this->origin;
@@ -28,6 +39,10 @@ class Circle extends Shape {
 
     /**
      * Sets the origin Vector of the circle
+     *
+     * @param Vector $origin the Vector center of the circle
+     *
+     * @throws InvalidArgumentException
      */
     public function setOrigin($origin) {
         if ($origin instanceof Vector) {
@@ -38,6 +53,8 @@ class Circle extends Shape {
 
     /**
      * Returns the radius of the circle
+     *
+     * @return number the radius of the circle
      */
     public function getRadius() {
         return $this->radius;
@@ -45,6 +62,10 @@ class Circle extends Shape {
 
     /**
      * Sets the radius of the circle
+     *
+     * @param number $radius the number radius of the Circle
+     *
+     * @throws InvalidArgumentException
      */
     public function setRadius($radius) {
         if (is_numeric($radius) && $radius >= 0) {
@@ -55,6 +76,8 @@ class Circle extends Shape {
 
     /**
      * Returns the area of the circle
+     *
+     * @return number the area of the circle
      */
     public function getArea() {
         return M_PI * $this->radius ** 2;
@@ -62,6 +85,8 @@ class Circle extends Shape {
 
     /**
      * Returns the circumference of the circle
+     *
+     * @return number the circumference of the circle
      */
     public function getCircumference() {
         return 2 * M_PI * $this->radius;
@@ -69,9 +94,12 @@ class Circle extends Shape {
 
     /**
      * Returns the circumference of the circle
+     *
+     * @return number the circumference of the circle
      */
     public function getPerimeter() {
         return $this->getCircumference();
     }
-}
+} // end Circle
+
 ?>

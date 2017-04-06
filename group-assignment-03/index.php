@@ -3,17 +3,15 @@
     highlight_file($_SERVER['SCRIPT_FILENAME']);
     exit;
   }
-?>
 
-<?php 
-  // Import required classes
+  // Import required classes and scripts
   require_once('shape.class.php'); 
   require_once('vector.class.php'); 
   require_once('rectangle.class.php'); 
   require_once('circle.class.php'); 
   require_once('triangle.class.php'); 
+  include_once('rendering.php'); 
 ?>
-
 <!-- 
   Contributors: Greg Gorlen, Ted Herr
 
@@ -32,45 +30,51 @@
         width: 95%;
       }
       #main {
+        width: 420px;
       }
     </style>
   </head>
   <body>
     <div id="main">
+
+      <!-- Create a canvas element to render the shapes onto -->
+      <canvas width=400 height=400 id="paper" style="border: 1px solid #666;">
+        Your browser doesn't support the canvas tag.
+      </canvas>
+
+
       <?php
+        // Create an array which will hold all of our shapes--
+        // shapes added first will be drawn first.
+        $shapes = [];
+
+
+        // Make a rectangle and add it to the shapes array
+        array_push($shapes, new Rectangle(new Vector(50, 50), 100, 30, "#40ebf7"));
+
+        // Make couple circles and add them to the shapes array
+        array_push($shapes, new Circle(new Vector(113, 202), 60, "#0056b0"));
+        array_push($shapes, new Circle(new Vector(353, 288), 15, "#58e40c"));
+
+        // Make a triangle and add it to the shapes array
+        array_push($shapes, new Triangle(
+          [new Vector(110, 190), new Vector(250, 170), new Vector(210, 340)], "#c450eb"
+        ));
+
+
+
+        // Print information for each of our shapes
         echo '<pre>';
-
-        // Make a triangle
-        $triangle = new Triangle(
-          [new Vector(130, 140), new Vector(60, 170), new Vector(210, 240)], "#c450eb"
-        );
-        print_r($triangle);
-
-        echo '<br />----------------------------------------------------<br />';
-
-        // Make a circle
-        $circle = new Circle(new Vector(113, 202), 90, "#0056b0");
-        print_r($circle);
-        echo 'Circle circumference: ' . $circle->getCircumference(). '<br />';
-        echo 'Changing circle radius to 30..' . $circle->setRadius(30). '<br />';
-        echo 'Circle circumference: ' . $circle->getCircumference(). '<br />';
-
-        echo '<br />----------------------------------------------------<br />';
-
-        // Make a rectangle
-        $rectangle = new Rectangle(new Vector(50, 50), 100, 30, "#40ebf7");
-        print_r($rectangle);
-        echo 'Rectangle perimeter: ' . $rectangle->getPerimeter() . '<br />';
-        echo 'Rectangle area: ' . $rectangle->getArea() . '<br />';
-
-
+        foreach($shapes as $shape) {
+          $shapeType = get_class($shape);
+          print_r($shape);
+          echo 'Perimeter of the ' . $shapeType . ': ' . $shape->getPerimeter() . '<br />' .
+               'Area of the ' . $shapeType . ': ' . $shape->getArea() . '<br />' .
+               '<br />--------------------------------------------------------<br />';
+        }
         echo '</pre>';
       ?>
 
-    <!-- Create a canvas element to render the shapes onto -->
-    <canvas width=400 height=400 id="paper" style="border: 1px solid #000;">
-      Your browser doesn't support the canvas tag.
-    </canvas>
     </div>
 
 
@@ -81,33 +85,18 @@
       let canvas = document.getElementById("paper");
       let ctx = canvas.getContext("2d");
 
-      // Draw the rectangle
-      ctx.fillStyle = "<?php echo $rectangle->getColor(); ?>";
-      ctx.fillRect(<?php echo $rectangle->getOrigin()->x . ', ' .
-                              $rectangle->getOrigin()->y . ', ' .
-                              $rectangle->getLength() . ', ' .
-                              $rectangle->getWidth(); ?>); 
-
-      // Draw the triangle
-      ctx.beginPath();
-      ctx.fillStyle = "<?php echo $triangle->getColor(); ?>";
       <?php 
-        foreach ($triangle->getVertices() as $v) {
-          echo 'ctx.lineTo(' . $v->x . ', ' . $v->y . ');';
-        }
-      ?> 
-      ctx.closePath();
-      ctx.fill();
-
-      // Draw the circle
-      ctx.beginPath();
-      ctx.fillStyle = "<?php echo $circle->getColor(); ?>";
-      ctx.arc(<?php echo $circle->getOrigin()->x . ',' . 
-                         $circle->getOrigin()->y . ',' .
-                         $circle->getRadius(); ?>, 0, Math.PI * 2);
-      ctx.fill();
+        // Draw the shapes
+        foreach ($shapes as $shape) {
+          try {
+            echo draw('ctx', $shape); 
+          } catch (Exception $e) {
+            echo 'console.log("Caught error: unable to draw ' . 
+                 get_class($shape) . '\n ' . $e->getMessage() . '");';
+          }
+        } 
+      ?>
 
     </script>
-
   </body>
 </html>
