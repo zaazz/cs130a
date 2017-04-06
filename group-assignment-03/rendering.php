@@ -1,11 +1,6 @@
 <?php
-  if (isset($_GET['source'])) {
-    highlight_file($_SERVER['SCRIPT_FILENAME']);
-    exit;
-  }
-?>
+include_once('../printable.php');
 
-<?php
 
 /*
  * This file contains necessary code to render PHP shapes on JS canvas.

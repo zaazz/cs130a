@@ -1,9 +1,6 @@
 <?php
-  if (isset($_GET['source'])) {
-    highlight_file($_SERVER['SCRIPT_FILENAME']);
-    exit;
-  }
-?>
+  include_once('printable.php');
+?> 
 <html lang="en">
   <head>
 
@@ -33,6 +30,11 @@
       .assignmentstable td, th {
         padding: 10px;
         border: 1px solid #aaa;
+      }
+
+      .assignmentstable tr {
+        background-color: transparent;
+        transition: background-color 0.5s;
       }
 
       .assignmentstable tr:hover {
@@ -106,6 +108,11 @@
         <th>9</th>
         <td><a href="<?=$labsPath?>lab09.php?source">Lab 9 Source code</a></td>
         <td><a href="<?=$labsPath?>lab09.php">Lab 9</a></td>
+      </tr>
+      <tr>
+        <th>10</th>
+        <td><a href="<?=$labsPath?>lab10.php?source">Lab 10 Source code</a></td>
+        <td><a href="<?=$labsPath?>lab10.php">Lab 10</a></td>
       </tr>
       <tr>
         <th>Group Lab #</th>

@@ -1,11 +1,6 @@
 <?php
-  if (isset($_GET['source'])) {
-    highlight_file($_SERVER['SCRIPT_FILENAME']);
-    exit;
-  }
-?>
+include_once('../printable.php');
 
-<?php
 
 /**
  * Represents a rectangle
@@ -20,7 +15,7 @@ class Rectangle extends Shape {
      *
      * @param Vector $origin the origin of the rectangle (upper-left corner)
      * @param number $length the length of the rectangle
-     * @param number $width the width of the rectangle
+     * @param number $width  the width of the rectangle
      *
      * @throws InvalidArgumentException
      */
@@ -51,9 +46,7 @@ class Rectangle extends Shape {
         if ($origin instanceof Vector) {
             $this->origin = $origin;
         }
-        else {
-            throw new InvalidArgumentException();
-        }
+        else { throw new InvalidArgumentException(); }
     }
 
     /**
@@ -76,9 +69,7 @@ class Rectangle extends Shape {
         if (is_numeric($length)) {
             $this->length = $length;
         }
-        else {
-            throw new InvalidArgumentException();
-        }
+        else { throw new InvalidArgumentException(); }
     }
 
     /**

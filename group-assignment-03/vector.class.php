@@ -1,11 +1,6 @@
 <?php
-  if (isset($_GET['source'])) {
-    highlight_file($_SERVER['SCRIPT_FILENAME']);
-    exit;
-  }
-?>
+include_once('../printable.php');
 
-<?php
 
 /**
  * Represents a Vector, a 2d point in space 

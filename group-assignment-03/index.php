@@ -1,8 +1,5 @@
 <?php
-  if (isset($_GET['source'])) {
-    highlight_file($_SERVER['SCRIPT_FILENAME']);
-    exit;
-  }
+  include_once('../printable.php');
 
   // Import required classes and scripts
   require_once('shape.class.php'); 

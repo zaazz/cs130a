@@ -1,10 +1,6 @@
 <?php
-  if (isset($_GET['source'])) {
-    highlight_file($_SERVER['SCRIPT_FILENAME']);
-    exit;
-  }
+  include_once('../printable.php');
 ?>
-
 <!-- 
   Contributors: Ted Herr, Greg Gorlen 
 -->
