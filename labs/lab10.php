@@ -33,6 +33,7 @@
 
       #uploadercontainer {
         margin-top: 60px;
+        width: 280px;
       }
 
       #uploader {
@@ -103,7 +104,7 @@
           if ($i % $break === 0 && $i !== 0) {
             echo '</tr><tr>';
           }
-          echo '<td><img src=' . $files[$i] . '></img></td>';
+          echo '<td><img class="draggable" src=' . $files[$i] . '></img></td>';
         }
         echo '</tr></table>';
 

@@ -7,7 +7,7 @@ include_once('../printable.php');
  * Output from these methods must be enclosed in <script> tags.
  */
 
-// Draws a rectangle on a canvas context
+// Outputs Javascript to draw a Rectangle object on a canvas context
 function drawRectangle($ctx, $rectangle) {
   return $ctx . '.fillStyle = "' . $rectangle->getColor() . '";' .
     $ctx . '.fillRect(' . $rectangle->getOrigin()->x . ', ' .
@@ -15,7 +15,7 @@ function drawRectangle($ctx, $rectangle) {
     $rectangle->getWidth() . ');';
 } // end drawRectangle
 
-// Draws a triangle on a canvas context
+// Outputs Javascript draw a Triangle object on a canvas context
 function drawTriangle($ctx, $triangle) {
   $output = $ctx . '.beginPath();' . $ctx . '.fillStyle = "' .
     $triangle->getColor() . '";';
@@ -26,7 +26,7 @@ function drawTriangle($ctx, $triangle) {
 } // end drawTriangle
 
 
-// Draws a circle on a canvas context
+// Outputs Javascript to draw a Circle object on a canvas context
 function drawCircle($ctx, $circle) {
   return $ctx . '.beginPath();' . $ctx . '.fillStyle = "' .
     $circle->getColor() . '";' .
@@ -38,11 +38,19 @@ function drawCircle($ctx, $circle) {
 
 // Draws a shape on a canvas context if possible
 function draw($ctx, $shape) {
-  switch (strtolower(get_class($shape))) {
-    case 'rectangle': return drawRectangle($ctx, $shape); break;
-    case 'circle': return drawCircle($ctx, $shape); break;
-    case 'triangle': return drawTriangle($ctx, $shape); break;
-    default: throw new InvalidArgumentException();
+  $shapeType = strtolower(get_class($shape));
+  if (strpos($shapeType, 'rectangle') !== false || 
+      strpos($shapeType, 'square') !== false) {
+    return drawRectangle($ctx, $shape);
+  }
+  else if (strpos($shapeType, 'circle') !== false) {
+    return drawCircle($ctx, $shape);   
+  }
+  else if (strpos($shapeType, 'triangle') !== false) {
+    return drawTriangle($ctx, $shape); 
+  }
+  else { 
+    throw new InvalidArgumentException(); 
   }
 } // end draw
 
