@@ -1,4 +1,4 @@
-# Group assignment 03: Object-Oriented Programming
+# Group assignment 3: Object-Oriented Programming
 *Due: Apr 10 by 10PM*
 
 **Requirements:**

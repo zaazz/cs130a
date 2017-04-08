@@ -7,7 +7,7 @@
   require_once('rectangle.class.php'); 
   require_once('circle.class.php'); 
   require_once('triangle.class.php'); 
-  require_once('rhombus.class.php);
+  require_once('rhombus.class.php');
   include_once('rendering.php'); 
 ?>
 <!-- 
@@ -61,7 +61,14 @@
 
         // Make a rhombus and add it to the shapes array
         array_push($shapes, new Rhombus(
-          [new Vector(200,35), new Vector(220,95), new Vector(270,133.73), new Vector(250,73.73)], "#f44b42"
+          [new Vector(200, 35), new Vector(220, 95), 
+           new Vector(270, 133.73), new Vector(250, 73.73)], "#f44b42"
+        ));
+
+        // Make a non-Rhombus figure using the Rhombus class--should be illegal?
+        array_push($shapes, new Rhombus(
+          [new Vector(200, 170), new Vector(240, 195), 
+           new Vector(200, 235), new Vector(320, 170)], "#08ac92"
         ));
 
         // Print information for each of our shapes

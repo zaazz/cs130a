@@ -2,6 +2,11 @@
 include_once('../printable.php');
 
 
+// Array of valid Polygons which have three or more vertices
+const POLYGONS = ['polygon', 'triangle', 'rhombus', 
+                  'parallelogram', 'octagon', 'hexagon'];
+
+
 /*
  * This file contains necessary code to render PHP shapes on JS canvas.
  * Output from these methods must be enclosed in <script> tags.
@@ -15,15 +20,15 @@ function drawRectangle($ctx, $rectangle) {
     $rectangle->getWidth() . ');';
 } // end drawRectangle
 
-// Outputs Javascript draw a Triangle object on a canvas context
-function drawTriangle($ctx, $triangle) {
+// Outputs Javascript draw a Polygon object on a canvas context
+function drawPolygon($ctx, $polygon) {
   $output = $ctx . '.beginPath();' . $ctx . '.fillStyle = "' .
-    $triangle->getColor() . '";';
-  foreach ($triangle->getVertices() as $v) {
+    $polygon->getColor() . '";';
+  foreach ($polygon->getVertices() as $v) {
     $output .= 'ctx.lineTo(' . $v->x . ', ' . $v->y . ');';
   }
   return $output . $ctx . '.closePath();' . $ctx . '.fill();';
-} // end drawTriangle
+} // end drawPolygon
 
 
 // Outputs Javascript to draw a Circle object on a canvas context
@@ -46,8 +51,9 @@ function draw($ctx, $shape) {
   else if (strpos($shapeType, 'circle') !== false) {
     return drawCircle($ctx, $shape);   
   }
-  else if (strpos($shapeType, 'triangle') !== false) {
-    return drawTriangle($ctx, $shape); 
+  else if (strpos($shapeType, 'triangle') !== false ||
+          in_array($shapeType, POLYGONS)) {
+    return drawPolygon($ctx, $shape); 
   }
   else { 
     throw new InvalidArgumentException(); 

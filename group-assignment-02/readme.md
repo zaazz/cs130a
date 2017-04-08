@@ -1,4 +1,4 @@
-# Group assignment 02: Functions and Forms
+# Group assignment 2: Functions and Forms
 *Due: March 26, 10 PM*
 
 **Requirements:**
