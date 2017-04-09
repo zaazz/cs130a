@@ -46,6 +46,8 @@
         // shapes added first will be drawn first.
         $shapes = [];
 
+        
+
 
         // Make a polygon
         array_push($shapes, new Polygon([vec(20, 40), vec(80, 10), vec(50, 90), 
@@ -79,14 +81,8 @@
 
         // Make colored lines
         for ($i = 0; $i < 10; $i++) {
-          array_push($shapes, new Rectangle(new Vector($i * 40, 390), 
-                     40, 3, 'hsl(' . mt_rand(0, 255) . ', ' . 
-                     mt_rand(0, 100) . '%, 50%)'));
-        }
-        for ($i = 0; $i < 10; $i++) {
-          array_push($shapes, new Rectangle(new Vector(390, $i * 40), 
-                     3, 40, 'hsl(' . mt_rand(0, 255) . ', ' . 
-                     mt_rand(0, 100) . '%, 50%)'));
+          array_push($shapes, new Rectangle(new Vector($i * 40, 390), 40, 3, rhsl()));
+          array_push($shapes, new Rectangle(new Vector(390, $i * 40), 3, 40, rhsl()));
         }
 
 
@@ -95,8 +91,10 @@
         foreach($shapes as $shape) {
           $shapeType = get_class($shape);
           print_r($shape);
-          echo 'Perimeter of the ' . $shapeType . ': ' . $shape->getPerimeter() . '<br />' .
-               'Area of the ' . $shapeType . ': ' . $shape->getArea() . '<br />' .
+          echo 'Perimeter of the ' . $shapeType . ': ' . 
+                $shape->getPerimeter() . '<br />' .
+               'Area of the ' . $shapeType . ': ' . 
+               $shape->getArea() . '<br />' .
                '--------------------------------------------------------<br />';
         }
         echo '</pre>';
@@ -105,6 +103,12 @@
         // Makes a new vector object
         function vec($x, $y) {
           return new Vector($x, $y);
+        }
+
+        // Generates a random hsl color string
+        function rhsl() {
+          return 'hsl(' . mt_rand(0, 255) . ', ' . 
+            mt_rand(0, 100) . '%,' . mt_rand(10, 90) . '%)';
         }
       ?>
 

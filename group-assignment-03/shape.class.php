@@ -6,7 +6,7 @@ include_once('../printable.php');
  * Represents a shape
  */
 abstract class Shape {
-    private $color;
+    private $color; // string color
 
 
     /**
@@ -37,7 +37,7 @@ abstract class Shape {
      *
      * @param string $color the color of the shape
      */
-    public function setColor($color) {
+    public function setColor($color = '#000') {
         $this->color = $color;
     }
 } // end Shape
