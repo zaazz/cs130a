@@ -8,6 +8,7 @@
   require_once('circle.class.php'); 
   require_once('triangle.class.php'); 
   require_once('rhombus.class.php');
+  require_once('square.class.php');
   include_once('rendering.php'); 
 ?>
 <!-- 
@@ -70,6 +71,9 @@
           [new Vector(200, 170), new Vector(240, 195), 
            new Vector(200, 235), new Vector(320, 170)], "#08ac92"
         ));
+ 
+        // Make a square and add it to the shapes array
+        array_push($shapes, new Square(new Vector(250, 230), 50, "rgba(255, 106, 0, 0.75)"));
 
         // Print information for each of our shapes
         echo '<pre>';
