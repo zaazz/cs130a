@@ -2,15 +2,11 @@
 include_once('../printable.php');
 
 
-// Array of valid Polygons which have three or more vertices
-const POLYGONS = ['polygon', 'triangle', 'rhombus', 
-                  'parallelogram', 'octagon', 'hexagon'];
-
-
 /*
  * This file contains necessary code to render PHP shapes on JS canvas.
  * Output from these methods must be enclosed in <script> tags.
  */
+
 
 // Outputs Javascript to draw a Rectangle object on a canvas context
 function drawRectangle($ctx, $rectangle) {
@@ -19,6 +15,7 @@ function drawRectangle($ctx, $rectangle) {
     $rectangle->getOrigin()->y . ', ' . $rectangle->getLength() . ', ' .
     $rectangle->getWidth() . ');';
 } // end drawRectangle
+
 
 // Outputs Javascript draw a Polygon object on a canvas context
 function drawPolygon($ctx, $polygon) {
@@ -41,18 +38,16 @@ function drawCircle($ctx, $circle) {
     $ctx . '.fill();';
 } // end drawCircle
 
+
 // Draws a shape on a canvas context if possible
 function draw($ctx, $shape) {
-  $shapeType = strtolower(get_class($shape));
-  if (strpos($shapeType, 'rectangle') !== false || 
-      strpos($shapeType, 'square') !== false) {
+  if (is_a($shape, 'Rectangle')) {
     return drawRectangle($ctx, $shape);
   }
-  else if (strpos($shapeType, 'circle') !== false) {
+  else if (is_a($shape, 'Circle')) {
     return drawCircle($ctx, $shape);   
   }
-  else if (strpos($shapeType, 'triangle') !== false ||
-          in_array($shapeType, POLYGONS)) {
+  else if (is_a($shape, 'Polygon')) {
     return drawPolygon($ctx, $shape); 
   }
   else { 

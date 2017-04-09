@@ -3,11 +3,12 @@ include_once('../printable.php');
 
 
 /**
- * Represents a circle
+ * Represents a circle, a shape that has an origin vector and a radius
  */
 class Circle extends Shape {
     private $origin; // A Vector object
     private $radius;
+
 
     /**
      * Constructor function
@@ -20,7 +21,7 @@ class Circle extends Shape {
     public function __construct($origin, $radius, $color) {
         $this->setOrigin($origin);
         $this->setRadius($radius);
-        $this->setColor($color);
+        parent::setColor($color);
     }
 
     /**

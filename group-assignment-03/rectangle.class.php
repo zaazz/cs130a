@@ -10,6 +10,7 @@ class Rectangle extends Shape {
     private $length;
     private $width;
     
+
     /**
      * Constructor for a Rectangle
      *
@@ -23,7 +24,7 @@ class Rectangle extends Shape {
         $this->setOrigin($origin);
         $this->setLength($length);
         $this->setWidth($width);
-        $this->setColor($color);
+        parent::setColor($color);
     }
 
     /**
