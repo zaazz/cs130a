@@ -6,24 +6,49 @@ include_once('../printable.php');
  * Represents a square
  */
 class Square extends Rectangle {
-    private $size; //Square only requires one length & width
-    
     
     /**
      * Constructor for a Square
      *
      * @param Vector $origin the origin of the square (upper-left corner)
-     * @param Number $size the length & width of the square
+     * @param number $size the length & width of the square
      *
      * @throws InvalidArgumentException
      */
     public function __construct($origin, $size, $color) {
-       if (is_numeric($size) && $size > 0){
         Rectangle::__construct($origin, $size, $size, $color);
-           }
-        else { throw new InvalidArgumentException(); }
     }
 
+      /**
+     * Setter for the length of the Square, also sets width to maintain square shape
+     *
+     * @param number $size of the Square
+     *
+     * @throws InvalidArgumentException
+     */
+    public function setLength($size){
+        if (is_numeric($size) && $size>0) {
+            $this->length = $size;
+            $this->width= $size;
+        }
+        else { throw new InvalidArgumentException(); }      
+    }
+  
+      /**
+     * Setter for the width of the Square, also sets length to maintain square shape
+     *
+     * @param number $size of the Square
+     *
+     * @throws InvalidArgumentException
+     */
+    public function setWidth($size){
+        if (is_numeric($size) && $size>0) {
+            $this->width = $size;
+            $this->length = $size;
+        }
+        else { throw new InvalidArgumentException(); }      
+    }
+  
 } // end Square
 
 ?>
