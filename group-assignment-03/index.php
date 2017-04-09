@@ -72,6 +72,11 @@
            new Vector(200, 235), new Vector(320, 170)], "#08ac92"
         ));
 
+        // Make a square and add it to the shapes array
+        array_push($shapes, new Square(new Vector(250, 230), 50, "rgba(255, 106, 0, 0.75)"));
+
+
+      
         // Print information for each of our shapes
         echo '<pre>';
         foreach($shapes as $shape) {
