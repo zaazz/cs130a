@@ -67,7 +67,7 @@ class Rectangle extends Shape {
      * @throws InvalidArgumentException
      */
     public function setLength($length) {
-        if (is_numeric($length)) {
+        if (is_numeric($length) && $length > 0) {
             $this->length = $length;
         }
         else { throw new InvalidArgumentException(); }
@@ -90,7 +90,7 @@ class Rectangle extends Shape {
      * @throws InvalidArgumentException
      */
     public function setWidth($width) {
-        if (is_numeric($width)) {
+        if (is_numeric($width) && $width > 0) {
             $this->width = $width;
         }
         else {
