@@ -65,7 +65,7 @@ class Square extends Rectangle {
      * @throws InvalidArgumentException
      */
     public function setWidth($width) {
-        $this->setSize($length);
+        $this->setSize($width);
     }
 } // end Square
 
