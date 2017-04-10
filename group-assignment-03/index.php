@@ -45,9 +45,9 @@
         // Create an array which will hold all of our shapes--
         // shapes added first will be drawn first.
         $shapes = [];
-
         
-
+        // Canvas height and width
+        $h = $w = 400;
 
         // Make a polygon
         array_push($shapes, new Polygon([vec(20, 40), vec(80, 10), vec(50, 90), 
@@ -69,14 +69,8 @@
 
         // Make a rhombus 
         array_push($shapes, new Rhombus(
-          [new Vector(200, 35), new Vector(220, 95), 
-           new Vector(270, 133), new Vector(250, 73)], "#f44b42"
-        ));
-
-        // Make a non-Rhombus figure using the Rhombus class--should be illegal?
-        array_push($shapes, new Rhombus(
-          [new Vector(200, 170), new Vector(240, 195), 
-           new Vector(200, 235), new Vector(320, 170)], "#08ac92"
+          [new Vector(320, 120), new Vector(330, 140), 
+           new Vector(320, 160), new Vector(310, 140)], "#f44b42"
         ));
 
         // Make colored lines

@@ -2,11 +2,16 @@
 include_once('../printable.php');
 
 
+/* Note: unfinished class! */
+
+
+
 /**
  * Represents a rhombus, a regular polygon with 4 equal sides
  */
 class Rhombus extends Polygon {
     private $diagonals;  // An array of diagonal lengths
+    private $sides;     // An array of diagonal lengths
 
 
     /**
@@ -45,17 +50,14 @@ class Rhombus extends Polygon {
 
             // Set or re-set instance side lengths
             $this->setSides($vertices);
+
+            // Throw an exception if side lengths aren't all the same
+            // Todo: this is a kludge, but it helps enforce Rhombus-ness for now
+            if (array_sum($this->sides) !== $this->sides[0] * 4) {
+                 throw new InvalidArgumentException(); 
+            }
         }
         else { throw new InvalidArgumentException(); }
-    }
-
-    /**
-     * Getter for side lengths
-     *
-     * @return array the number lengths of the sides of the Rhombus
-     */
-    public function getSides() {
-        return $this->sides;
     }
 
     /**
@@ -72,15 +74,23 @@ class Rhombus extends Polygon {
         return $p * $q;
     }
 
-    /**
-     * Returns the perimeter of the Rhombus
-     *
-     * @return number the perimeter of the Rhombus
-     */
-    public function getPerimeter() {
-        return array_sum($this->sides);
-    }
+    // Sets or re-sets the side instance data whenever vertices are set
+    protected function setSides($vertices) {
 
+        // Initialize sides instance variable as array
+        $this->sides = [];
+
+        // Set last vertex previous to the first
+        $j = count($this->vertices)-1;
+
+        for ($i = 0; $i < count($this->vertices); $i++) {
+            array_push($this->sides, sqrt(pow($this->vertices[$j]->x - $this->vertices[$i]->x, 2) +
+                                          pow($this->vertices[$j]->y - $this->vertices[$i]->y, 2)));
+
+            // Set j to the current i, which will be the previous next iteration
+            $j = $i;
+        }
+    }
 
     // Calculates the length of the diagonals
     private function setDiagonals($vertices) {
@@ -94,7 +104,6 @@ class Rhombus extends Polygon {
         // Calculate the diagonal lengths. Vertices are numbered clockwise around the rhombus
         array_push($this->diagonals, sqrt(pow($v3->x - $v1->x, 2) + pow($v3->y - $v1->y, 2)));
         array_push($this->diagonals, sqrt(pow($v4->x - $v2->x, 2) + pow($v4->y - $v2->y, 2)));
-
     } // end setDiagonals
 } // end Rhombus
 
