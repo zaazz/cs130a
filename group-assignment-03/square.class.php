@@ -17,12 +17,7 @@ class Square extends Rectangle {
      * @throws InvalidArgumentException
      */
     public function __construct($origin, $size, $color) {
-        parent::setOrigin($origin);
-        parent::setColor($color);
-        $this->setSize($size);
-
-        // This line throws an error for me, not sure why!
-        // Rectangle::__construct($origin, $size, $size, $color); 
+        parent::__construct($origin, $size, $size, $color);
     }
  
     /**
@@ -65,7 +60,7 @@ class Square extends Rectangle {
      * @throws InvalidArgumentException
      */
     public function setWidth($width) {
-        $this->setSize($length);
+        $this->setSize($width);
     }
 } // end Square
 
