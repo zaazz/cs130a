@@ -7,7 +7,7 @@ include_once('../printable.php');
  */
 class Polygon extends Shape {
     private $vertices;   // An array of Vector objects
-    private $sides;      // An array of side lengths
+    private $sides=[];      // An array of side lengths
 
 
     /**
