@@ -40,7 +40,7 @@ class Polygon extends Shape {
      * @throws InvalidArgumentException
      */
     public function setVertices($vertices){
-        if (count($vertices) > 2 && Vector::isVectorArray($vertices)) {
+        if (count($vertices) > 2 && $this->isVectorArray($vertices)) {
             $this->vertices = $vertices;
 
             // Set or re-set instance side lengths
@@ -111,6 +111,16 @@ class Polygon extends Shape {
             $j = $i; 
         }
     } 
+    
+    // Determines whether all elements in an array are Vector objects
+    private function isVectorArray($arr) {
+        forEach($arr as $element) {
+            if (!($element instanceof Vector)) {
+                return false;
+            }
+        }
+        return true;
+    }
 } // end Polygon
 
 ?>

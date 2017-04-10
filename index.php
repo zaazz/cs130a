@@ -149,6 +149,8 @@
             <li><a href="group-assignment-03/circle.class.php?source">circle.class.php</a></li>
             <li><a href="group-assignment-03/triangle.class.php?source">triangle.class.php</a></li>
             <li><a href="group-assignment-03/rectangle.class.php?source">rectangle.class.php</a></li>
+            <li><a href="group-assignment-03/square.class.php?source">square.class.php</a></li>
+            <li><a href="group-assignment-03/polygon.class.php?source">polygon.class.php</a></li>
             <li><a href="group-assignment-03/rendering.php?source">rendering.php</a></li>
           </ul>
         </td>

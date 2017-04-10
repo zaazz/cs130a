@@ -3,11 +3,9 @@ include_once('../printable.php');
 
 
 /**
- * Represents a rhombus
+ * Represents a rhombus, a regular polygon with 4 equal sides
  */
-class Rhombus extends Shape {
-    private $vertices;   // An array of Vector objects
-    private $sides;      // An array of side lengths
+class Rhombus extends Polygon {
     private $diagonals;  // An array of diagonal lengths
 
 
@@ -15,7 +13,7 @@ class Rhombus extends Shape {
      * Constructor for a Rhombus object
      *
      * @param array  $vertices an array of three Vector objects
-     * @param string $color    the string color of the Triangle
+     * @param string $color    the string color of the Rhombus 
      *
      * @throws InvalidArgumentException
      */
@@ -42,7 +40,7 @@ class Rhombus extends Shape {
      * @throws InvalidArgumentException
      */
     public function setVertices($vertices){
-        if (count($vertices) === 4 && $this->isVectorArray($vertices)) {
+        if (count($vertices) === 4) {
             $this->vertices = $vertices;
 
             // Set or re-set instance side lengths
@@ -83,21 +81,6 @@ class Rhombus extends Shape {
         return array_sum($this->sides);
     }
 
-    // Sets or re-sets the side instance data whenever vertices are set
-    private function setSides($vertices) {
-
-        // Initialize sides instance variable as array
-        $this->sides = [];
-
-        // Store vertices in temporary variables
-        list($v1, $v2, $v3, $v4) = $vertices;
-
-        // Set the side lengths by taking the distance between each vertex.  Rhombas vertices are numbered clockwise from vertex 1
-        array_push($this->sides, sqrt(pow($v2->x - $v1->x, 2) + pow($v2->y - $v1->y, 2)));
-        array_push($this->sides, sqrt(pow($v3->x - $v2->x, 2) + pow($v3->y - $v2->y, 2)));
-        array_push($this->sides, sqrt(pow($v4->x - $v3->x, 2) + pow($v4->y - $v3->y, 2)));
-        array_push($this->sides, sqrt(pow($v1->x - $v4->x, 2) + pow($v1->y - $v4->y, 2)));
-    } // end setSides
 
     // Calculates the length of the diagonals
     private function setDiagonals($vertices) {
@@ -113,14 +96,6 @@ class Rhombus extends Shape {
         array_push($this->diagonals, sqrt(pow($v4->x - $v2->x, 2) + pow($v4->y - $v2->y, 2)));
 
     } // end setDiagonals
-    // Determines whether all elements in an array are Vector objects
-    private function isVectorArray($arr) {
-        forEach($arr as $element) {
-            if (!($element instanceof Vector)) {
-                return false;
-            }
-        }
-        return true;
-    } // end isVectorArray
-} // end Triangle
+} // end Rhombus
+
 ?>

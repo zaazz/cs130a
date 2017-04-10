@@ -20,22 +20,6 @@ class Vector {
         $this->x = $x;
         $this->y = $y;
     }
-
-    /**
-      *  Determines whether all elements in an array are Vector objects
-      *
-      * @param array $arr an input array to test
-      * @return boolean true if each element in the array
-      *                 is a Vector, false otherwise
-      */
-    public static final function isVectorArray($arr) {
-        forEach($arr as $element) {
-            if (!($element instanceof Vector)) {
-                return false;
-            }
-        }
-        return true;
-    }
 } // end Vector
 
 ?>
